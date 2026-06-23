@@ -1,6 +1,5 @@
-# PBO-Kelompok1-Kelas-B-Proyek-UAS
-
 Pembagian Tugas
+
 Abyan - Anggota 1 : 
 Arsitektur kode program, Kelas Induk (Abstract Class), dan Git Management
 Membuat repositori GitHub dan mengatur kolaborasi tim.Menerapkan Computational Thinking untuk mendesain struktur dasar kode.
