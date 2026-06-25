@@ -1,37 +1,36 @@
 from abc import ABC, abstractmethod
 
-class Baking(ABC):
-    @abstractmethod
-    def baking(self):
-        pass
-
-class Packaging(ABC):
+class IStandarisasi(ABC):
     @abstractmethod
     def packaging(self):
         pass
 
-class Labeling(ABC):
     @abstractmethod
     def labeling(self):
         pass
 
-class ProdukBakery(ABC, Baking, Packaging, Labeling):
-    def __init__(self, nama_produk, kode_produk, biaya_produksi, harga_jual, bahan_baku):
-        self.nama_produk = nama_produk
-        self.kode_produk = kode_produk
+class ProdukBakery(IStandarisasi, ABC):
+    def _init_(self, kode, nama, bahan_baku, n_pcs, biaya_produksi, harga_jual):
+        self.kode = kode
+        self.nama = nama
+        self.bahan_baku = bahan_baku         
+        self.n_pcs = n_pcs                    
         self.biaya_produksi = biaya_produksi  
         self.harga_jual = harga_jual          
-        self.bahan_baku = bahan_baku          
+
+    def info_dasar(self):
+        print(f"\n[{self.kode}] {self.nama}")
+        print(f"  - Standar Porsi Resep : {self.n_pcs} pcs")
+        print(f"  - Biaya Produksi per resep : Rp {self.biaya_produksi:,.2f}")
+        print(f"  - Harga Jual per resep     : Rp {self.harga_jual:,.2f}")
+        print("  - Daftar Bahan Baku:")
+        for bahan, jumlah in self.bahan_baku.items():
+            print(f"    * {bahan}: {jumlah}")
 
     @abstractmethod
     def pengadonan(self):
         pass
-    def pengembangan(self):
+
+    @abstractmethod
+    def pemanggangan(self):
         pass
-    def topping(self):
-        pass
-    def hitung_estimasi_profit(self, jumlah_pcs, n_pcs_resep=1):
-        biaya_per_pcs = self.biaya_produksi / n_pcs_resep
-        harga_per_pcs = self.harga_jual / n_pcs_resep
-        profit_per_pcs = harga_per_pcs - biaya_per_pcs
-        return profit_per_pcs * jumlah_pcs
