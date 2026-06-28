@@ -1,4 +1,4 @@
-class Croissant():
+class Croissant(ProdukBakery):
     def pengadonan(self):
         print(f"-> [Proses Pengadonan {self.nama}]: Membuat adonan dasar (détrempe), diistirahatkan, lalu dilipat berulang kali dengan teknik laminasi korsvet (butter sheet).")
 
