@@ -1,3 +1,4 @@
+from abstrak_interface import ProdukBakery
 class ButterCookies(ProdukBakery):
     def pengadonan(self):
         print(f"-> [Proses Pengadonan {self.nama}]: Mengocok mentega berkualitas tinggi dan gula halus hingga mengembang (creaming method), lalu melipat tepung terigu secara perlahan.")

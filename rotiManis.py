@@ -1,3 +1,5 @@
+from abstrak_interface import ProdukBakery
+
 class RotiManis(ProdukBakery):
     def pengadonan(self):
         print(f"-> [Proses pengadonan {self.nama}]: Mencampur tepung terigu tinggi protein, ragi, gula, telur, susu, mentega, dan garam")
