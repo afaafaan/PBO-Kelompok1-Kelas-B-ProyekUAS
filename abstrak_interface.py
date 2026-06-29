@@ -10,7 +10,7 @@ class IStandarisasi(ABC):
         pass
 
 class ProdukBakery(IStandarisasi, ABC):
-    def _init_(self, kode, nama, bahan_baku, n_pcs, biaya_produksi, harga_jual):
+    def __init__(self, kode, nama, bahan_baku, n_pcs, biaya_produksi, harga_jual):
         self.kode = kode
         self.nama = nama
         self.bahan_baku = bahan_baku         
