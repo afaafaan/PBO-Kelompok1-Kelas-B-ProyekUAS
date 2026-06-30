@@ -122,7 +122,7 @@ def simulasi_produksi():
 # MENU UTAMA
 def main():
     while True:
-        print("\n" + "="*20)
+        print("\n" + "="*30)
         print("PROGRAM MENU HANARI BAKERY")
         print("-"*30)
         print("1. Tambah Produk Baru")
@@ -130,7 +130,7 @@ def main():
         print("3. Kalkulator Profit")
         print("4. Simulasi Proses Produksi")
         print("5. Keluar")
-        print("="*20)
+        print("="*30)
         pilihan = input("Nomor yang dipilih: ")
 
         if pilihan == "1":
