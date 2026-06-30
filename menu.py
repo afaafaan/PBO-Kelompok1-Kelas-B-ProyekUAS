@@ -16,9 +16,8 @@ def tambah_produk():
     print("4. Muffin")
     pilihan = input("Nomor yang dipilih: ")
 
-    kode = input("Masukkan Kode Produk   : ")
-    nama = input("Masukkan Nama Produk   : ")
-    tahun = input("Masukkan Tahun Terbit  : ")
+    kode = input("Masukkan Kode Produk    : ")
+    nama = input("Masukkan Nama Produk    : ")
     biaya = int(input("Masukkan Biaya Produksi: "))
     harga = int(input("Masukkan Harga Jual    : "))
     n_pcs = int(input("Masukkan Jumlah Pcs    : "))
@@ -57,25 +56,24 @@ def tampil_semua_produk():
 def kalkulator_profit():
     print("\n" + "-"*40)
     print("KALKULATOR PROFIT")
-    print("Pilih jenis produk:")
-    print("1. Roti Manis")
-    print("2. Croissant")
-    print("3. Butter Cookies")
-    print("4. Muffin")
+
+    if len(daftar_produk) == 0:
+        print("Belum ada produk yang ditambahkan. Tambahkan produk terlebih dahulu!")
+        input("\nTekan [ENTER] untuk kembali ke menu program")
+        return
+
+    print("Pilih produk:")
+    for i, produk in enumerate(daftar_produk, 1):
+        print(f"{i}. {produk.nama} ({produk.kode})")
     pilihan = input("Nomor yang dipilih: ")
 
-    produk_map = {
-        "1": RotiManis("RM001", "Roti Manis", {}, 10, 15000, 25000),
-        "2": Croissant("CR001", "Croissant", {}, 10, 20000, 35000),
-        "3": ButterCookies("BC001", "Butter Cookies", {}, 10, 10000, 18000),
-        "4": Muffin("MF001", "Muffin", {}, 10, 12000, 20000)
-    }
-
-    if pilihan not in produk_map:
+    try:
+        index = int(pilihan) - 1
+        produk = daftar_produk[index]
+    except (ValueError, IndexError):
         print("Pilihan tidak valid!")
         return
 
-    produk = produk_map[pilihan]
     jumlah = int(input("Masukkan jumlah pcs yang akan diproduksi: "))
     profit = (produk.harga_jual - produk.biaya_produksi) * jumlah
     print("-"*40)
@@ -89,25 +87,24 @@ def kalkulator_profit():
 def simulasi_produksi():
     print("\n" + "-"*40)
     print("SIMULASI PROSES PRODUKSI")
-    print("Pilih jenis produk:")
-    print("1. Roti Manis")
-    print("2. Croissant")
-    print("3. Butter Cookies")
-    print("4. Muffin")
+
+    if len(daftar_produk) == 0:
+        print("Belum ada produk yang ditambahkan. Tambahkan produk terlebih dahulu!")
+        input("\nTekan [ENTER] untuk kembali ke menu program")
+        return
+
+    print("Pilih produk:")
+    for i, produk in enumerate(daftar_produk, 1):
+        print(f"{i}. {produk.nama} ({produk.kode})")
     pilihan = input("Nomor yang dipilih: ")
 
-    produk_map = {
-        "1": RotiManis("RM001", "Roti Manis", {}, 10, 15000, 25000),
-        "2": Croissant("CR001", "Croissant", {}, 10, 20000, 35000),
-        "3": ButterCookies("BC001", "Butter Cookies", {}, 10, 10000, 18000),
-        "4": Muffin("MF001", "Muffin", {}, 10, 12000, 20000)
-    }
-
-    if pilihan not in produk_map:
+    try:
+        index = int(pilihan) - 1
+        produk = daftar_produk[index]
+    except (ValueError, IndexError):
         print("Pilihan tidak valid!")
         return
 
-    produk = produk_map[pilihan]
     print(f"\n=== Simulasi Produksi {produk.nama} ===")
     produk.pengadonan()
     if hasattr(produk, "pengembangan"):
@@ -122,7 +119,7 @@ def simulasi_produksi():
 # MENU UTAMA
 def main():
     while True:
-        print("\n" + "="*30)
+        print("\n" + "="*20)
         print("PROGRAM MENU HANARI BAKERY")
         print("-"*30)
         print("1. Tambah Produk Baru")
@@ -130,7 +127,7 @@ def main():
         print("3. Kalkulator Profit")
         print("4. Simulasi Proses Produksi")
         print("5. Keluar")
-        print("="*30)
+        print("="*20)
         pilihan = input("Nomor yang dipilih: ")
 
         if pilihan == "1":
